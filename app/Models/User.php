@@ -60,6 +60,10 @@ class User extends Authenticatable
 
     public function getPlan(): ?string
     {
+        if (empty($this->subscriptions())){
+            return null;
+        }
+
         $subscription = $this->subscriptions()
             ->where(function ($query) {
                 $query->whereNull('ends_at')
@@ -69,5 +73,10 @@ class User extends Authenticatable
             ->first();
 
         return $subscription ? $subscription->type : null;
+    }
+
+    public function files()
+    {
+        return $this->morphMany(File::class, 'fileable');
     }
 }

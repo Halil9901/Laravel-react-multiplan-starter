@@ -31,7 +31,7 @@ Route::middleware(['auth', 'verified', 'subscribed'])->group(function () {
 // Routes for users who have registered but have not paid
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     route::get('/get-started', function (Request $request) {
@@ -47,5 +47,7 @@ Route::middleware('auth')->group(function () {
 Route::get('/checkout-success', [ProfileController::class, 'checkoutSuccess'])->middleware(['auth', 'subscribed'])->name('checkout.success');
 Route::post('/subscription-checkout', [StripeController::class, 'checkout'])->name('subscription.checkout');
 Route::get('/billing-portal', [StripeController::class, 'billingPortal'])->name('billing.portal');
+
+Route::get('test', [\App\Http\Controllers\FileController::class, 'index']);
 
 require __DIR__.'/auth.php';

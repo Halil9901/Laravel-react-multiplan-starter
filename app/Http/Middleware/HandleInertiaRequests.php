@@ -30,10 +30,20 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
+        if(!$request->user()) {
+            return [
+                ...parent::share($request),
+                'auth' => [
+                    'user' => null,
+                ],
+            ];
+
+        }
+
         return [
             ...parent::share($request),
             'auth' => [
-                'user' => new UserResource($request->user()),
+                'user' => new UserResource($request->user()->with('files')->first()),
             ],
         ];
     }

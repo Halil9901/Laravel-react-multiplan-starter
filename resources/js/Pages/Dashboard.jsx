@@ -16,6 +16,8 @@ export default function Dashboard({ auth, userKey }) {
                         <div className="p-6 text-gray-900">this user is on the {auth.user.plan} plan</div>
                     </div>
                 </div>
+
+                <img src={auth.user.avatar.url} />
             </div>
         </AuthenticatedLayout>
     );
