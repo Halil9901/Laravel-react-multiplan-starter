@@ -138,7 +138,7 @@ export default function Register({p}) {
 
                             <div className="flex flex-col items-center justify-end mt-4">
 
-                                <Button type="submit" className=" w-full" disabled={processing}>
+                                <Button type="submit" className="bg-primary w-full" disabled={processing}>
                                     Register
                                 </Button>
                             </div>

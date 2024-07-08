@@ -17,7 +17,6 @@ export default function Dashboard({ auth, userKey }) {
                     </div>
                 </div>
 
-                <img src={auth.user.avatar.url} />
             </div>
         </AuthenticatedLayout>
     );

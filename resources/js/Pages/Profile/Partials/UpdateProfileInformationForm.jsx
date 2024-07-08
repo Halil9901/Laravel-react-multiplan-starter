@@ -13,7 +13,7 @@ export default function UpdateProfileInformation({ mustVerifyEmail, status, clas
     const { data, setData, post, errors, processing, recentlySuccessful } = useForm({
         name: user.name,
         email: user.email,
-        file: user.avatar.filename,
+        file: user?.avatar?.filename,
     });
 
     useEffect(() => {
@@ -40,9 +40,9 @@ export default function UpdateProfileInformation({ mustVerifyEmail, status, clas
                     {/* Display current avatar */}
                     <InputLabel htmlFor="image" value="Profile Picture"/>
                     <div className="mt-2 flex items-center">
-                        {user.avatar && (
+                        {user?.avatar && (
                             <img
-                                src={user.avatar.url}
+                                src={user?.avatar?.url}
                                 alt="Current Avatar"
                                 className="h-20 w-20 rounded-full object-cover"
                             />

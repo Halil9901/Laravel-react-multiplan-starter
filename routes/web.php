@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProviderController;
 use App\Http\Controllers\StripeController;
 use App\Models\StripePlan;
 use Illuminate\Foundation\Application;
@@ -8,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use Laravel\Socialite\Facades\Socialite;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -49,5 +51,11 @@ Route::post('/subscription-checkout', [StripeController::class, 'checkout'])->na
 Route::get('/billing-portal', [StripeController::class, 'billingPortal'])->name('billing.portal');
 
 Route::get('test', [\App\Http\Controllers\FileController::class, 'index']);
+
+
+Route::get('/auth/{provider}/redirect', [ProviderController::class, 'redirect'])->name('auth.redirect');
+
+Route::get('/auth/{provider}/callback', [ProviderController::class, 'callback'])->name('callback');
+
 
 require __DIR__.'/auth.php';

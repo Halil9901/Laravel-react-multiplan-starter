@@ -23,6 +23,9 @@ class User extends Authenticatable
         'email',
         'password',
         'has_accessed_success_page',
+        'provider',
+        'provider_id',
+        'provider_token',
     ];
 
     /**
@@ -73,6 +76,11 @@ class User extends Authenticatable
             ->first();
 
         return $subscription ? $subscription->type : null;
+    }
+
+    public function getAuthProvider(): ?string
+    {
+        return !empty($this->provider) ? $this->provider : null;
     }
 
     public function files()

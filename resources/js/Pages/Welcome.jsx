@@ -2,6 +2,7 @@ import { Link, Head } from '@inertiajs/react';
 import Pricing from "@/Components/Pricing.jsx";
 import {Navbar} from "@/Components/Marketing/Navbar.jsx";
 import {Hero} from "@/Components/Marketing/Hero.jsx";
+import Problem from "@/Components/Marketing/Problem.jsx";
 
 export default function Welcome({ auth, laravelVersion, phpVersion, plans }) {
     const handleImageError = () => {
@@ -20,6 +21,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion, plans }) {
                 <div className="">
 
                         <Hero/>
+                        <Problem/>
 
                         <Pricing plans={plans}/>
 

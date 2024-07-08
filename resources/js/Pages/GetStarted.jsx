@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button, Card } from 'flowbite-react';
 import { useForm } from '@inertiajs/react';
 
-export default function GetStarted({ plans, p }) {
+export default function GetStarted({ auth, plans, p }) {
     const [selectedPlan, setSelectedPlan] = useState(p);
     const [selectPlanStripeId, setSelectPlanStripeId] = useState(null);
     const [billingCycle, setBillingCycle] = useState('monthly');
@@ -55,7 +55,7 @@ export default function GetStarted({ plans, p }) {
     return (
         <div className="flex flex-col items-center justify-center min-h-screen space-y-8 bg-gray-50 py-12">
             <h1 className="text-4xl font-extrabold text-gray-900">Pick your plan</h1>
-            <p className="text-lg text-gray-600">Hi {p}, choose the best plan that fits your needs.</p>
+            <p className="text-lg text-gray-600">Hi {auth.user.name}, choose the best plan that fits your needs.</p>
 
             <div className="text-center">
                 <h4 className="text-2xl font-bold text-gray-800 mb-4">Choose a billing cycle:</h4>
