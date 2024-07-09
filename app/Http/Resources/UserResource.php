@@ -21,7 +21,7 @@ class UserResource extends JsonResource
             'id' => $this->id ?? null,
             'name' => $this->name ?? null,
             'email' => $this->email ?? null,
-            'plan' => $this->getPlan() ?? null,
+            'plan' => $this->getPlan(),
             'trial_ends_at' => $this->trial_ends_at ?? null,
             'avatar' => $this->whenLoaded('files' , function() {
                 return new FileResource($this->files->first());
