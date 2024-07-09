@@ -96,7 +96,7 @@ class ProviderController extends Controller
             'provider_id' => $providerUser->id,
             'provider' => $provider
         ], [
-            'name' => $providerUser->name,
+            'name' => ucwords($providerUser->name),
             'email' => $providerUser->email,
             'password' => Hash::make(Str::random(24)), // store a random password
             'provider_token' => $providerUser->token,
