@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -13,10 +16,22 @@ use Laravel\Socialite\Facades\Socialite;
 class ProviderController extends Controller
 {
 
+    /**
+     * Redirect to auth provider for authentication
+     *
+     * @param $provider
+     * @return RedirectResponse|\Symfony\Component\HttpFoundation\RedirectResponse
+     */
     public function redirect($provider){
         return Socialite::driver($provider)->redirect();
     }
 
+    /**
+     * Callback from auth provider
+     *
+     * @param $provider
+     * @return Application|\Illuminate\Foundation\Application|RedirectResponse|Redirector
+     */
     public function callback($provider) {
         try {
             // Log out the current user, if any
@@ -83,7 +98,7 @@ class ProviderController extends Controller
         ], [
             'name' => $providerUser->name,
             'email' => $providerUser->email,
-            'password' => Hash::make(Str::random(24)),
+            'password' => Hash::make(Str::random(24)), // store a random password
             'provider_token' => $providerUser->token,
         ]);
     }
@@ -99,9 +114,5 @@ class ProviderController extends Controller
         Auth::login($user);
         return redirect(route('dashboard'));
     }
-
-
-
-
 }
 
