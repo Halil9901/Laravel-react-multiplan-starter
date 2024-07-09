@@ -13,7 +13,9 @@
         "laravel/socialite": "*",
         "laravel/tinker": "^2.9",
         "league/flysystem-aws-s3-v3": "^3.0",
-        "tightenco/ziggy": "^2.0"
+        "njoguamos/laravel-plausible": "^1.4",
+        "tightenco/ziggy": "^2.0",
+        "vincentbean/laravel-plausible": "^2.1"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
