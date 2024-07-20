@@ -8,6 +8,8 @@
 
         <script defer data-domain="arrceno.com" src="https://plausible.io/js/script.js"></script>
 
+        <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="c992bf54-2772-448e-b670-1ff0d2425e66";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
+
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
